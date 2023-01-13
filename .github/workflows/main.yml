@@ -7,7 +7,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node: ['16.x']
+        node: ['16.x', '18.x']
         os: [ubuntu-latest]
 
     steps:
@@ -37,7 +37,7 @@ jobs:
         run: pnpm lint
 
       - name: Release
-        if: matrix.node == '16.x' && matrix.os == 'ubuntu-latest'
+        if: matrix.node == '18.x' && matrix.os == 'ubuntu-latest'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
